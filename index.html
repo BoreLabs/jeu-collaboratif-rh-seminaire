@@ -5,70 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Le Robot à l’Aveugle – Résumé du jeu</title>
     <style>
-      /* ===== Corps du site ===== */
       body {
         font-family: Arial, sans-serif;
         margin: 50px auto;
         max-width: 800px;
         line-height: 1.8em;
+        background-color: #f4f4f9;
         padding: 20px;
         border-radius: 10px;
         text-align: left;
-        color: #fff;
-        background: #0f0f1a;
-        overflow: hidden;
-        position: relative;
       }
 
-      /* ===== Fond techno/robotique animé ===== */
-      body::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background-image:
-          radial-gradient(#0ff 1px, transparent 1px),
-          radial-gradient(#0ff 1px, transparent 1px);
-        background-size: 40px 40px;
-        background-position: 0 0, 20px 20px;
-        animation: techMove 20s linear infinite;
-        z-index: -1;
-        opacity: 0.2;
-      }
-
-      body::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(45deg, #0ff 1px, transparent 1px) repeat,
-                    linear-gradient(-45deg, #0ff 1px, transparent 1px) repeat;
-        background-size: 20px 20px;
-        animation: techLines 15s linear infinite;
-        z-index: -1;
-        opacity: 0.1;
-      }
-
-      @keyframes techMove {
-        0% { transform: translate(0,0); }
-        100% { transform: translate(50px,50px); }
-      }
-
-      @keyframes techLines {
-        0% { transform: translate(0,0); }
-        100% { transform: translate(-40px,40px); }
-      }
-
-      /* ===== Contenu ===== */
       #content {
         font-size: 1.2em;
         transition: opacity 1s ease-in-out;
-        position: relative;
-        z-index: 1;
       }
 
       #timer {
@@ -77,8 +27,6 @@
         font-size: 1.3em;
         text-align: center;
         margin-top: 40px;
-        position: relative;
-        z-index: 1;
       }
 
       strong {
