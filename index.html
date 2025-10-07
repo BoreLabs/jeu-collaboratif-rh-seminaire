@@ -13,22 +13,28 @@
         background-color: #f4f4f9;
         padding: 20px;
         border-radius: 10px;
+        text-align: left;
       }
+
       #content {
         font-size: 1.2em;
+        transition: opacity 1s ease-in-out;
       }
+
       #timer {
         font-weight: bold;
         color: #e63946;
         font-size: 1.3em;
         text-align: center;
-        margin-top: 30px;
+        margin-top: 40px;
       }
+
       strong {
         color: #1d3557;
       }
     </style>
   </head>
+
   <body>
     <div id="content">
       <strong>🤖 Le Robot à l’Aveugle – Résumé du jeu</strong><br><br>
@@ -46,8 +52,8 @@
       - Le guide dispose de 30 secondes pour expliquer :<br>
         - Quelles actions effectuer<br>
         - Dans quel ordre<br>
-        - Les repères à mémoriser<br>
-        - Comment corriger une erreur<br>
+        - Les obstacles à mémoriser<br>
+        - Comment corriger une erreur ou un oubli<br>
       - Passé ce temps, le guide reste silencieux et dos tourné.<br>
       - Le robot réalise la mission seul, en respectant strictement les instructions.<br>
       - Toute erreur, oubli ou doute entraîne un temps supplémentaire.<br><br>
@@ -81,14 +87,19 @@
     <script>
       let temps = 30; // durée en secondes
       const timer = document.getElementById("timer");
+      const content = document.getElementById("content");
 
       const interval = setInterval(() => {
-        timer.textContent = "Temps restant : " + temps + " secondes";
+        timer.textContent = "⏳ Temps restant : " + temps + " secondes";
         temps--;
 
         if (temps < 0) {
           clearInterval(interval);
-          timer.textContent = "⏱ Temps écoulé !";
+          content.style.opacity = "0"; // effet de disparition
+          setTimeout(() => {
+            content.style.display = "none";
+            timer.textContent = "⏱ Temps écoulé !";
+          }, 1000);
         }
       }, 1000);
     </script>
