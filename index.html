@@ -5,20 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Le Robot à l’Aveugle – Résumé du jeu</title>
     <style>
+      /* ===== Corps du site ===== */
       body {
         font-family: Arial, sans-serif;
         margin: 50px auto;
         max-width: 800px;
         line-height: 1.8em;
-        background-color: #f4f4f9;
         padding: 20px;
         border-radius: 10px;
         text-align: left;
+        color: #fff;
+        background: #0f0f1a;
+        overflow: hidden;
+        position: relative;
       }
 
+      /* ===== Fond techno/robotique animé ===== */
+      body::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image:
+          radial-gradient(#0ff 1px, transparent 1px),
+          radial-gradient(#0ff 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: 0 0, 20px 20px;
+        animation: techMove 20s linear infinite;
+        z-index: -1;
+        opacity: 0.2;
+      }
+
+      body::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #0ff 1px, transparent 1px) repeat,
+                    linear-gradient(-45deg, #0ff 1px, transparent 1px) repeat;
+        background-size: 20px 20px;
+        animation: techLines 15s linear infinite;
+        z-index: -1;
+        opacity: 0.1;
+      }
+
+      @keyframes techMove {
+        0% { transform: translate(0,0); }
+        100% { transform: translate(50px,50px); }
+      }
+
+      @keyframes techLines {
+        0% { transform: translate(0,0); }
+        100% { transform: translate(-40px,40px); }
+      }
+
+      /* ===== Contenu ===== */
       #content {
         font-size: 1.2em;
         transition: opacity 1s ease-in-out;
+        position: relative;
+        z-index: 1;
       }
 
       #timer {
@@ -27,6 +77,8 @@
         font-size: 1.3em;
         text-align: center;
         margin-top: 40px;
+        position: relative;
+        z-index: 1;
       }
 
       strong {
@@ -49,11 +101,11 @@
         - <strong>🧭 Guide :</strong> dos tourné au robot, transmet verbalement les instructions.<br><br>
 
       <strong>📋 Déroulement de la mission :</strong><br>
-      - Le guide dispose doit expliquer :<br>
-        - Expliquer les actions à effectuer<br>
+      - Le guide dispose de 30 secondes pour expliquer :<br>
+        - Quelles actions effectuer<br>
         - Dans quel ordre<br>
-        - Les obstacles à mémoriser<br>
-        - Comment corriger une erreur ou un oubli<br>
+        - Les repères à mémoriser<br>
+        - Comment corriger une erreur<br>
       - Passé ce temps, le guide reste silencieux et dos tourné.<br>
       - Le robot réalise la mission seul, en respectant strictement les instructions.<br>
       - Toute erreur, oubli ou doute entraîne un temps supplémentaire.<br><br>
@@ -65,11 +117,11 @@
       - Possibilité de battre le record du binôme précédent.<br><br>
 
       <strong>🎓 Objectifs pédagogiques :</strong><br>
-      - Développer la communication claire et précise<br>
-      - Renforcer la concentration et la mémoire<br>
-      - Encourager la confiance mutuelle<br>
-      - Apprendre la gestion du temps et du stress<br>
-      - Permettre observation et analyse après chaque mission<br><br>
+      - Développer la communication claire et précise.<br>
+      - Renforcer la concentration et la mémoire.<br>
+      - Encourager la confiance mutuelle.<br>
+      - Apprendre la gestion du temps et du stress.<br>
+      - Permettre observation et analyse après chaque mission.<br><br>
 
       <strong>🔄 Déroulement complet :</strong><br>
       - Le lecteur mémorise les consignes.<br>
@@ -85,7 +137,7 @@
     <div id="timer"></div>
 
     <script>
-      let temps = 60; // durée en secondes
+      let temps = 30; // durée en secondes
       const timer = document.getElementById("timer");
       const content = document.getElementById("content");
 
